@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func showLoading(_ isLoading: Bool) -> some View {
-        self.modifier(LoadingModifier(isLoading: isLoading))
+    func showLoading(_ isLoading: Bool, text: String = "Cargando...") -> some View {
+        self.modifier(LoadingModifier(isLoading: isLoading, text: text))
     }
 }

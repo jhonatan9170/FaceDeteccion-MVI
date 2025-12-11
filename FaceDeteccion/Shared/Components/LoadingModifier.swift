@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadingModifier: ViewModifier {
     let isLoading: Bool
+    let text: String
     
     func body(content: Content) -> some View {
         ZStack {
@@ -16,18 +17,20 @@ struct LoadingModifier: ViewModifier {
                 .allowsHitTesting(!isLoading)
             
             if isLoading {
-                Color.black.opacity(0.3)
+                Color.black.opacity(0.75)
                     .ignoresSafeArea()
                 
                 ProgressView() {
-                    Text("Cargando...")
+                    Text(text)
                         .foregroundColor(.white)
-                        
+                    
                 }
-                    .scaleEffect(1.3)
-                    .transition(.opacity)
-                    .animation(.easeInOut(duration: 0.2), value: isLoading)
-                    .progressViewStyle(.automatic)
+                .tint(.white)
+                .scaleEffect(1.3)
+                .transition(.opacity)
+                .animation(.easeInOut(duration: 0.2), value: isLoading)
+                .progressViewStyle(.automatic)
+                
             }
         }
     }
@@ -37,6 +40,6 @@ struct LoadingModifier: ViewModifier {
     VStack {
         Text("Contenido de ejemplo")
             .padding()
-            .showLoading(true)
+            .showLoading(true, text: "Cargando...")
     }
 }

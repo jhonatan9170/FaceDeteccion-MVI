@@ -4,6 +4,7 @@
 //
 //  Created by jhonatan on 25/11/25.
 //
+
 import SwiftUI
 
 struct HomeView: View {
@@ -41,9 +42,8 @@ struct HomeView: View {
                     viewModel.send(.selectImage(image))
                 }
             }
+            .showLoading(viewModel.state.isDetecting)
         }
-        .showLoading(viewModel.state.isDetecting)
-        
     }
 }
 
